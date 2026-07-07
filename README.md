@@ -21,9 +21,7 @@ This repo contains the **Quartz v5** static site generator configuration and cus
 
 ```
 Obsidian Vault (markdown)
-    ↓ Git push
-GitHub (second-brain repo)
-    ↓ VPS pull + build
+    ↓
 Quartz (this repo) → nginx → Caddy → Cloudflare
     ↓
 garden.christianjeremia.com
@@ -31,7 +29,7 @@ garden.christianjeremia.com
 
 ## Related
 
-- **[github.com/christianj27/second-brain](https://github.com/christianj27/second-brain)** — The Obsidian vault (raw markdown notes)
+- **[Quartz v5](https://github.com/jackyzha0/quartz)** — The static site generator that powers this garden
 - **[garden.christianjeremia.com](https://garden.christianjeremia.com)** — The live site
 
 ---
