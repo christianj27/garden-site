@@ -1,0 +1,33 @@
+# Graph Link Visibility Fix Patch
+# =================================
+# The Quartz graph plugin (github:quartz-community/graph) hardcodes link lines
+# as "#555555" in graph.inline.ts, which is nearly invisible on dark backgrounds.
+#
+# This patch changes the hardcoded color to use the CSS --gray variable so it
+# respects theme colors. Combined with custom.scss override to brighten dark
+# mode --gray, this makes graph links visible in both themes.
+#
+# To reapply after a Quartz plugin update (which overwrites .quartz/):
+#
+#   cd ~/quartz-site
+#   patch -p1 < patches/graph-link-visibility.patch
+#
+# Or manually: edit .quartz/plugins/graph/src/components/scripts/graph.inline.ts
+# and change line 353 from:
+#   linkData.color = linkData.active ? "#555555" : "#555555";
+# to:
+#   linkData.color = linkData.active ? gray : gray;
+#
+# Then rebuild: npx quartz build --directory ~/obsidian-vault --output ./public
+
+diff --git a/.quartz/plugins/graph/src/components/scripts/graph.inline.ts b/.quartz/plugins/graph/src/components/scripts/graph.inline.ts
+--- a/.quartz/plugins/graph/src/components/scripts/graph.inline.ts
++++ b/.quartz/plugins/graph/src/components/scripts/graph.inline.ts
+@@ -350,7 +350,7 @@
+             alpha = linkData.active ? 1 : 0.2;
+           }
+           linkData.alpha = alpha;
+-          linkData.color = linkData.active ? "#555555" : "#555555";
++          linkData.color = linkData.active ? gray : gray;
+         }
+       }
